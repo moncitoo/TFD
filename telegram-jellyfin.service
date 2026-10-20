@@ -1,0 +1,15 @@
+[Unit]
+Description=Telegram -> Jellyfin downloader
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/telegram-jellyfin
+EnvironmentFile=/opt/telegram-jellyfin/.env
+ExecStart=/opt/telegram-jellyfin/venv/bin/python main.py
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
